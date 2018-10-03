@@ -1,0 +1,44 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "chat app",
+  "main": "server.js",
+  "dependencies": {
+    "angular-local-storage": "^0.7.1",
+    "angular-middleware": "^2.1.9",
+    "angular-socket-io": "^0.7.0",
+    "body-parser": "^1.18.3",
+    "bower": "^1.8.4",
+    "bower-update-all": "^0.1.2",
+    "eventlistener": "0.0.1",
+    "events-listener": "^1.1.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "flash": "^1.1.0",
+    "flash-express": "^1.0.4",
+    "glyphicons": "^0.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.16",
+    "passport": "^0.4.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "socket.io-p2p": "^2.2.0",
+    "socket.io-p2p-server": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lohithaarva/Chatapp.git"
+  },
+  "author": "lohitha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lohithaarva/Chatapp/issues"
+  },
+  "homepage": "https://github.com/lohithaarva/Chatapp#readme"
+}
