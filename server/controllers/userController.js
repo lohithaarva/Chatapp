@@ -206,55 +206,60 @@ exports.getmsgs=function(req,res){
        
     })
 }
-// exports.addtodb=function (senderId,receiverId,senderName,receiverName, message,date) {
-//     var userModel = require('../models/peeruser');
-//     var db = new userModel();
-//     var response={};
-//     db.message=message;
-//     db.date=date;
-//     db.receiverId=receiverId;
-//     db.senderId=senderId
-//     db.senderName=senderName;
-//     db.receiverName=receiverName;
-//     db.save(function (err) {
-//         if (err) {
-//             response = {
-//                 "error": true,
-//                 "message": "error storing data"
-//             }
-//         }
-//         else {
-//             response = { "error": false, "message": "succesfully added to database" }
-//         }
-//     });
-//     console.log(response)
 
-// }
-// exports.getsinglemsgs=function(req,res){
-//     var userModel = require('../models/peeruser');
-//     var response = {};
-//     userModel.find({},function(err,data){
-//         if(data){
-//             response={
-//                 "error":false,
-//                 "message":data
-                
-//             }
-//             res.status(200).send(response);
-//         }
-//         else{
-//             response={
-//                 "error":true,
-//                 "message":"something went wrong",
-                
-//             }
-//             console.log(err);
-//             res.status(401).send(response);
-//         }
-       
-//     })
-// }
+exports.addtopersonaldb = function (userid,  message, date,receiverid,sendername,receivername) {
+    var userModel = require('../models/personal');
+    var db = new userModel();
+    var response = {};
+    db.message = message;
+    db.date = date;
+    db.senderid = userid;
+    db.sendername = sendername;
+    db.receivername=receivername;
+    db.receiverid = receiverid;
+    db.save(function (err) {//save the data into the database
+        if (err) {
+            response = {
+                "error": true,
+                "message": "error storing data"
+            }
+        }
+        else {
+            response = { "error": false, "message": "succesfully added to database" }
+        }
+    });
+    console.log(response)
 
+}
+exports.getPersonalmsgs = function (req, res) {
+    console.log("backend api")
+    var userModel = require('../models/personal');
+    var response = {};
+    console.log(req.params.peerId);
+    console.log(req.params.id);
+
+    userModel.find({$or:[{ senderid: req.params.peerId, receiverid: req.params.id }, { senderid: req.params.id, receiverid: req.params.peerId }]}, function (err, data) { //finds all the data in the database
+        console.log(data)
+        if (data) {
+            response = {
+                "error": false,
+                "message": data
+
+            }
+            res.status(200).send(response);
+        }
+        else {
+            response = {
+                "error": true,
+                "message": "something went wrong",
+
+            }
+            console.log(err);
+            res.status(401).send(response);
+        }
+
+    })
+}
 
 
 

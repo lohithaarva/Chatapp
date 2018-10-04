@@ -6,7 +6,7 @@ var auth = require('../authentication/index');
 
 router.get('/users/:id/list',auth, users.listOfUsers);
 router.get('/users/:id/msgs',auth, users.getmsgs);
-// router.get('/users/:id/singlemsg',auth, users.getsinglemsgs);
+router.get('/users/:id/personalmsgs/:peerId', auth, users.getPersonalmsgs)
 
 module.exports = router;
 
